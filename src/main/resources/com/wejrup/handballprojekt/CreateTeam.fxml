@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wejrup.handballprojekt.Standings">
+   <children>
+      <AnchorPane prefHeight="150.0" prefWidth="1280.0" style="-fx-background-color: #003fff;">
+         <children>
+            <Label layoutX="242.0" layoutY="17.0" prefHeight="150.0" text="Standings" textFill="WHITE" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font name="System Bold" size="80.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="1.0" layoutY="609.0" prefHeight="80.0" prefWidth="1280.0" style="-fx-background-color: #B1B2B5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+   </children>
+</AnchorPane>
