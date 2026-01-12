@@ -1,29 +1,45 @@
 package com.wejrup.handballprojekt;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ScrollEvent;
 
 public class  MatchScreenController {
-    public Match match;
+
+    private Match match;
+
     @FXML private Label timeLabel;
     @FXML private MatchTimer matchTimer;
     @FXML private Button startTimerButton;
     @FXML private Button pauseTimerButton;
     @FXML private Label homeTeamGoals;
     @FXML private Label awayTeamGoals;
+    @FXML private TextArea eventBox;
+    @FXML private Label homeTeamName;
+    @FXML private Label awayTeamName;
+
 
     //Deafult fxml metode som bliver kaldt af fxml loader
     public void initialize(){
-        match = StartMatchController.getMatch();
+        System.out.println("[MatchScreen] initialize()");
         setTimeButtonsOpacity(1,0.4);
         matchTimer = new MatchTimer(1);
-
         matchTimer.setOnTick(() -> {
             setTimelabelText(formatTime(matchTimer.getCurrentSeconds()));
         });
+    }
 
+    private void refresh() {
+        if (match == null) return;
+
+        homeTeamName.setText(match.getHomeTeamName());
+        awayTeamName.setText(match.getAwayTeamName());
     }
 
     private String formatTime(int totalSeconds){
@@ -63,26 +79,54 @@ public class  MatchScreenController {
 
     @FXML
     private void addHomeGoal(){
-        match.addOneHomeGoal();
+        match.addOneHomeGoal(matchTimer.getCurrentSeconds());
         updateScoreLabel();
+        renderEventBox();
     }
 
     @FXML
     private void addAwayGoal(){
-        match.addOneAwayGoal();
+        match.addOneAwayGoal(matchTimer.getCurrentSeconds());
         updateScoreLabel();
+        renderEventBox();
     }
 
     @FXML
     private void removeHomeGoal(){
-        match.removeOneHomeGoal();
+        match.removeOneHomeGoal(matchTimer.getCurrentSeconds());
         updateScoreLabel();
+        renderEventBox();
     }
 
     @FXML
     private void removeAwayGoal(){
-        match.removeOneAwayGoal();
+        match.removeOneAwayGoal(matchTimer.getCurrentSeconds());
         updateScoreLabel();
+        renderEventBox();
+    }
+
+    @FXML
+    private void addSuspensionHome(){
+        match.addSuspensionHome(matchTimer.getCurrentSeconds());
+        renderEventBox();
+    }
+
+    @FXML
+    private void addSuspensionAway(){
+        match.addSuspensionAway(matchTimer.getCurrentSeconds());
+        renderEventBox();
+    }
+
+    @FXML
+    private void undoSuspensionHome(){
+        match.undoSuspensionHome(matchTimer.getCurrentSeconds());
+        renderEventBox();
+    }
+
+    @FXML
+    private void undoSuspensionAway(){
+        match.undoSuspensionAway(matchTimer.getCurrentSeconds());
+        renderEventBox();
     }
 
 
@@ -91,6 +135,39 @@ public class  MatchScreenController {
         awayTeamGoals.setText(String.format("%02d", match.getAwayTeamGoals()));
 
     }
+
+    public void setMatch(Match match){
+        this.match = match;
+        refresh();
+        renderEventBox();
+    }
+
+    private void renderEventBox() {
+        if (match == null) return;
+
+        StringBuilder sb = new StringBuilder();
+
+        for (Event e : match.getEvents()) {
+            sb.append(e.formatTime())
+                    .append(" - ")
+                    .append(e.getTeamSide())
+                    .append(" ")
+                    .append(e.getType())
+                    .append("   ")
+                    .append(e.getCurrentScore())
+                    .append("\n");
+        }
+
+        eventBox.setText(sb.toString());
+    }
+
+    @FXML
+    public void saveAndExit(){
+        for (Event e : match.getEvents()) {
+            System.out.println(e);
+        }
+    }
+
 
 
 }
