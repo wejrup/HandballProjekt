@@ -20,6 +20,7 @@ public class MenuController {
     @FXML
     private void startMatchAction(){
         sceneChange("StartMatch.fxml");
+        Database.selectAllTeams();
     }
 
 

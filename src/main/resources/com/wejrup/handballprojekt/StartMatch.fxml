@@ -15,6 +15,7 @@
                   <Font name="System Bold" size="80.0" />
                </font>
             </Label>
+            <Button cancelButton="true" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="1.0" layoutY="609.0" prefHeight="80.0" prefWidth="1280.0" style="-fx-background-color: #B1B2B5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />

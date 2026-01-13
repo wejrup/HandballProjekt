@@ -11,6 +11,7 @@ public class MatchTimer {
 
     private final int matchLengthSeconds;
     private int currentSeconds;
+    private final boolean matchIsFinished;
     private final Timeline timeline;
     private Runnable onTick;
 
@@ -18,6 +19,7 @@ public class MatchTimer {
     public MatchTimer(int minutter){
         matchLengthSeconds = minutter * 60;
         currentSeconds = 0;
+        matchIsFinished = false;
 
         timeline = new Timeline(
                 new KeyFrame(Duration.seconds(1), e -> tick())
@@ -56,6 +58,10 @@ public class MatchTimer {
 
     public void setOnTick(Runnable onTick) {
         this.onTick = onTick;
+    }
+
+    public boolean matchIsFinished(){
+        return matchIsFinished;
     }
 
 }

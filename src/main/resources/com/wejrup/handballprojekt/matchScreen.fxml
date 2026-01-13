@@ -169,7 +169,7 @@
             </HBox>
          </children>
       </Pane>
-      <Button layoutX="1120.0" layoutY="720.0" mnemonicParsing="false" onAction="#saveAndExit" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 25; -fx-background-color: #5D8AA8;" text="Save and Exit" textFill="WHITE">
+      <Button fx:id="saveandexit" layoutX="1120.0" layoutY="720.0" mnemonicParsing="false" onAction="#saveAndExit" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 25; -fx-background-color: #5D8AA8;" text="Save and Exit" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>

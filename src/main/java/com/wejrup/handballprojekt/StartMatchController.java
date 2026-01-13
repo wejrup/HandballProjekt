@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class StartMatchController {
     @FXML private Button nextButton;
@@ -18,14 +19,8 @@ public class StartMatchController {
     @FXML private ChoiceBox<Team> homeTeamChoiceBox;
     @FXML private ChoiceBox<Team> awayTeamChoiceBox;
 
-    private final Team[] teams = {
-            new Team(1,"hold1",0),
-            new Team(2,"hold2",0),
-            new Team(3,"hold3",0)
-
-    };
-
     public void initialize(){
+        ArrayList<Team> teams = Database.selectAllTeams();
         homeTeamChoiceBox.getItems().addAll(teams);
         awayTeamChoiceBox.getItems().addAll(teams);
     }
@@ -40,15 +35,32 @@ public class StartMatchController {
             errorLabel.setText("Du mangler at vælge en eller flere hold.");
             return;
         }
+        else if (home == away){
+            System.out.println("2 ens hold er valgt.");
+            errorLabel.setText("Du skal vælge 2 forskellige hold");
+            return;
+        }
+        int matchID = Database.createMatch(home.getTeamID(), away.getTeamID());
+        Match match = new Match(matchID, home, away);
+        System.out.println("MathID: " + matchID);
 
-        Match match = new Match(1, home, away);
+        sceneChange("matchScreen.fxml",match);
+    }
+    @FXML
+    private void backButton(){
+        sceneChange("Menu.fxml",null);
+    }
+
+    private void sceneChange(String sceneFile, Match match) {
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("matchScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFile));
             Parent root = loader.load();
 
-            MatchScreenController controller = loader.getController();
-            controller.setMatch(match);
+            if ("matchScreen.fxml".equals(sceneFile)) {
+                MatchScreenController controller = loader.getController();
+                controller.setMatch(match);
+            }
 
             Stage stage = (Stage) nextButton.getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -59,7 +71,5 @@ public class StartMatchController {
         }
     }
 
+    }
 
-
-
-}

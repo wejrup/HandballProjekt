@@ -57,6 +57,10 @@ public class Event {
         return currentScore;
     }
 
+    public int getMatchID(){
+        return matchID;
+    }
+
     public String toString() {
         return "Event type: " + getType() + " TimeStamp: " + getEventTimestampSeconds() + " Side: " + getTeamSide() + " Current Score: " + getCurrentScore();
     }

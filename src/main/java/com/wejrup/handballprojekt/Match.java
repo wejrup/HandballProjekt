@@ -111,6 +111,7 @@ public class Match {
     public int getAwayTeamGoals(){
         return awayTeamGoals;
     }
+
 }
 
 
