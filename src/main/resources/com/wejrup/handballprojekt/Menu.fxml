@@ -17,12 +17,12 @@
             <Font name="System Bold" size="63.0" />
          </font>
       </Label>
-      <Button layoutX="458.0" layoutY="428.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: #9EB9D4;" text="Standings" textFill="WHITE" AnchorPane.leftAnchor="440.0" AnchorPane.topAnchor="400.0">
+      <Button fx:id="standingsButton" layoutX="458.0" layoutY="428.0" mnemonicParsing="false" onAction="#standingsAction" prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: #9EB9D4;" text="Standings" textFill="WHITE" AnchorPane.leftAnchor="440.0" AnchorPane.topAnchor="400.0">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Button>
-      <Button layoutX="464.0" layoutY="535.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: #9EB9D4;" text="Match Reports" textFill="WHITE" AnchorPane.leftAnchor="440.0" AnchorPane.topAnchor="500.0">
+      <Button layoutX="464.0" layoutY="535.0" mnemonicParsing="false" onAction="#matchReportAction" prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: #9EB9D4;" text="Match Reports" textFill="WHITE" AnchorPane.leftAnchor="440.0" AnchorPane.topAnchor="500.0">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>

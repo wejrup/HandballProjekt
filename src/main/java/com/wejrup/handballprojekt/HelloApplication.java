@@ -10,6 +10,12 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
+        if (!Database.openConnection("HåndboldDB")) {
+            System.out.println("Kunne ikke oprette forbindelse til databasen");
+            System.exit(1);
+        }
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
         stage.setTitle("Handball Match System");

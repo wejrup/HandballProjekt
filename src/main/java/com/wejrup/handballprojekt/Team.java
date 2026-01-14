@@ -20,6 +20,10 @@ public class Team {
     public int getPoints(){
         return points;
     }
+
+    public void setPoints(int points){
+        this.points = points;
+    }
     public String toString(){
         return teamName;
     }

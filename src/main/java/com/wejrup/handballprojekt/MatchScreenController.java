@@ -172,20 +172,25 @@ public class  MatchScreenController {
 
     @FXML
     public void saveAndExit(ActionEvent event){
+        Database.updateMatchGoals(match.getMatchID(),match.getHomeTeamGoals(),match.getAwayTeamGoals());
         for (Event e : match.getEvents()) {
             Database.addEvent(e);
             matchTimer.resetTimer();
+            sceneChange("Menu.fxml");
+        }
+    }
+    private void sceneChange(String sceneFile) {
 
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFile));
+            Parent root = loader.load();
 
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.show();
+            Stage stage = (Stage) saveandexit.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
 
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

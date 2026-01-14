@@ -5,33 +5,33 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MenuController {
-    @FXML
-    private Button startMatchButton;
-    @FXML
-    private Button standingsButton;
-    @FXML
-    private Button matchReportButton;
+public class CreateTeamController {
+
+    @FXML private Button saveAndExit;
+    @FXML private TextField teamName;
 
     @FXML
-    private void startMatchAction(){
-        sceneChange("StartMatch.fxml");
+    public void cancelAction(){
+
     }
 
     @FXML
-    private void standingsAction(){
+    public void saveAndExitAction(){
+        String name = teamName.getText();
+
+        if (name == null || name.isBlank()) {
+            System.out.println("Navn mangler");
+            return;
+        }
+
+        Database.createTeam(name);
         sceneChange("Standings.fxml");
     }
-
-    @FXML
-    private void matchReportAction(){
-        sceneChange("MatchReport.fxml");
-    }
-
 
     private void sceneChange(String sceneFile) {
 
@@ -39,7 +39,7 @@ public class MenuController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFile));
             Parent root = loader.load();
 
-            Stage stage = (Stage) startMatchButton.getScene().getWindow();
+            Stage stage = (Stage) saveAndExit.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
 
@@ -47,4 +47,5 @@ public class MenuController {
             e.printStackTrace();
         }
     }
+
 }

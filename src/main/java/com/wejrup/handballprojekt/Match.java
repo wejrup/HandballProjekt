@@ -76,10 +76,6 @@ public class Match {
         return "ToDo";
     }
 
-    public String toString() {
-        return "Home Team ID: " + homeTeam.getTeamID() + " Home name: " + homeTeam.getTeamName()   + " Goals: " + homeTeamGoals  +  "\n Away team ID: " + awayTeam.getTeamID() + " Away name: " + awayTeam.getTeamName() + " Goals: " + awayTeamGoals;
-    }
-
     public String getScoreline(){
         return homeTeamGoals + " - " + awayTeamGoals;
     }
@@ -110,6 +106,18 @@ public class Match {
 
     public int getAwayTeamGoals(){
         return awayTeamGoals;
+    }
+
+    public void setHomeTeamGoals(int goals){
+        homeTeamGoals = goals;
+    }
+
+    public void setAwayTeamGoals(int goals){
+        awayTeamGoals = goals;
+    }
+
+    public String toString(){
+        return getHomeTeamName() + " " + homeTeamGoals + " - " + awayTeamGoals + " " + getAwayTeamName();
     }
 
 }
