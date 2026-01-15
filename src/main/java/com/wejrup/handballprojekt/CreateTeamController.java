@@ -17,7 +17,7 @@ public class CreateTeamController {
 
     @FXML
     public void cancelAction(){
-
+        sceneChange("Standings.fxml");
     }
 
     @FXML

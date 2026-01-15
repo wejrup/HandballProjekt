@@ -10,12 +10,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MenuController {
-    @FXML
-    private Button startMatchButton;
-    @FXML
-    private Button standingsButton;
-    @FXML
-    private Button matchReportButton;
+    @FXML private Button startMatchButton;
+    @FXML private Button standingsButton;
+    @FXML private Button matchReportButton;
 
     @FXML
     private void startMatchAction(){

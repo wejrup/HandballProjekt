@@ -19,8 +19,7 @@ public class StandingsController {
 
     @FXML private Button backButton;
 
-    @FXML
-    private ListView<LeaugeStandLine> standingListView;
+    @FXML private ListView<LeaugeStandLine> standingListView;
 
     private final ObservableList<Team> teams = FXCollections.observableArrayList();
 
