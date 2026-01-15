@@ -31,6 +31,7 @@ public class Event {
         this.currentScore = currentScore;
     }
 
+
     public int getEventTimestampSeconds(){
         return eventTimestampSeconds;
     }

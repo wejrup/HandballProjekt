@@ -14,7 +14,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class matchReportController {
-    @FXML private ListView matchReportListView;
+
+    @FXML private ListView<MatchReportLine> matchReportListView;
     @FXML private Button backButton;
 
     private final ObservableList<Match> matches = FXCollections.observableArrayList();
@@ -37,24 +38,37 @@ public class matchReportController {
         }
     }
 
-    //Note MouseEvent fremfor ActionEvent
+    // Note MouseEvent fremfor ActionEvent
     @FXML
     private void matchListClicked(MouseEvent event) {
         if (event.getClickCount() == 2) {
-            MatchReportLine selected = (MatchReportLine) matchReportListView.getSelectionModel().getSelectedItem();
 
-            if (selected != null) {
-                Match match = selected.getMatch();
-                int matchId = match.getMatchID();
+            MatchReportLine selected = matchReportListView
+                    .getSelectionModel()
+                    .getSelectedItem();
 
-                System.out.println("Dobbeltklik på matchId: " + matchId);
-                //ToDo handling ved dobbeltklik
+            if (selected == null) return;
+
+            Match match = selected.getMatch();
+            System.out.println("Dobbeltklik på matchId: " + match.getMatchID());
+
+            // Load næste scene + send match til controller
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("SelectedMatchReport.fxml"));
+                Parent root = loader.load();
+
+                SelectedMatchReportController controller = loader.getController();
+                controller.setMatch(match); // her “sendes” objektet videre
+
+                Stage stage = (Stage) matchReportListView.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
-
-
-
 
     @FXML
     private void backButtonAction() {

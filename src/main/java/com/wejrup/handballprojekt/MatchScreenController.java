@@ -172,12 +172,14 @@ public class  MatchScreenController {
 
     @FXML
     public void saveAndExit(ActionEvent event){
-        Database.updateMatchGoals(match.getMatchID(),match.getHomeTeamGoals(),match.getAwayTeamGoals());
+        System.out.println(match.getEvents());
         for (Event e : match.getEvents()) {
+            System.out.println(e);
             Database.addEvent(e);
-            matchTimer.resetTimer();
-            sceneChange("Menu.fxml");
         }
+        Database.updateMatchGoals(match.getMatchID(),match.getHomeTeamGoals(),match.getAwayTeamGoals());
+        matchTimer.resetTimer();
+        sceneChange("Menu.fxml");
     }
     private void sceneChange(String sceneFile) {
 

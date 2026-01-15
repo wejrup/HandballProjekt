@@ -88,8 +88,8 @@ public class Database {
 
     public static void addEvent(Event event) {
         String sql = """
-        INSERT INTO dbo.[event] (matchid, eventtype, totalseconds, teamid)
-        VALUES (?, ?, ?, ?);
+        INSERT INTO dbo.[event] (matchid, eventtype, totalseconds, teamid, currentscore, teamside)
+        VALUES (?, ?, ?, ?, ?, ?);
         """;
 
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -98,6 +98,8 @@ public class Database {
             ps.setString(2, event.getType().name());
             ps.setInt(3, event.getEventTimestampSeconds());
             ps.setInt(4, event.getTeamID());
+            ps.setString(5,event.getCurrentScore());
+            ps.setString(6,event.getTeamSide().name());
 
             ps.executeUpdate();
 
@@ -234,6 +236,48 @@ public class Database {
         } catch (SQLException e) {
             throw new RuntimeException("Fejl ved opdatering af mål for match", e);
         }
+    }
+
+    public static ArrayList<Event> selectEventsByMatchId(int matchId) {
+
+        String sql = """
+        SELECT eventid, matchid, eventtype, totalseconds, teamid, currentscore, teamside
+        FROM dbo.[event]
+        WHERE matchid = ?;
+        """;
+
+        ArrayList<Event> events = new ArrayList<>();
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setInt(1, matchId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+
+                    int eventId = rs.getInt("eventid");
+                    int mId = rs.getInt("matchid");
+                    String typeString = rs.getString("eventtype");
+                    int totalSeconds = rs.getInt("totalseconds");
+                    int teamId = rs.getInt("teamid");
+                    String currentScore = rs.getString("currentscore");
+                    String sideString = rs.getString("teamside");
+
+                    Event.EventType type = Event.EventType.valueOf(typeString);
+                    Event.TeamSide side = Event.TeamSide.valueOf(sideString);
+
+                    Event event = new Event(mId, type, totalSeconds, teamId, side, currentScore);
+                    events.add(event);
+
+                    System.out.println(event);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return events;
     }
 
 

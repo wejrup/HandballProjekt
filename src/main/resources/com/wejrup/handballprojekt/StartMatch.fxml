@@ -15,7 +15,6 @@
                   <Font name="System Bold" size="80.0" />
                </font>
             </Label>
-            <Button cancelButton="true" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="1.0" layoutY="609.0" prefHeight="80.0" prefWidth="1280.0" style="-fx-background-color: #B1B2B5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
@@ -33,5 +32,10 @@
       <ChoiceBox fx:id="awayTeamChoiceBox" layoutX="88.0" layoutY="339.0" prefWidth="150.0" />
       <ChoiceBox fx:id="homeTeamChoiceBox" layoutX="88.0" layoutY="232.0" prefWidth="150.0" />
       <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="464.0" prefHeight="17.0" prefWidth="257.0" textFill="RED" />
+      <Button layoutX="1150.0" layoutY="750.0" mnemonicParsing="false" onAction="#backButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 25; -fx-background-color: #5D8AA8;" text="Back" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
