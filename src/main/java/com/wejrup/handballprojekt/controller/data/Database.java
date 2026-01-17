@@ -7,6 +7,7 @@ import com.wejrup.handballprojekt.domain.Team;
 import java.sql.*;
 import java.util.ArrayList;
 
+@SuppressWarnings("CallToPrintStackTrace")
 public class Database {
     private static Connection connection;
 
@@ -245,7 +246,7 @@ public class Database {
     public static ArrayList<Event> selectEventsByMatchId(int matchId) {
 
         String sql = """
-        SELECT eventid, matchid, eventtype, totalseconds, teamid, currentscore, teamside
+        SELECT matchid, eventtype, totalseconds, teamid, currentscore, teamside
         FROM dbo.[event]
         WHERE matchid = ?;
         """;
@@ -259,7 +260,6 @@ public class Database {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
 
-                    int eventId = rs.getInt("eventid");
                     int mId = rs.getInt("matchid");
                     String typeString = rs.getString("eventtype");
                     int totalSeconds = rs.getInt("totalseconds");

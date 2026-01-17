@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+@SuppressWarnings("CallToPrintStackTrace")
 public class MatchReportController {
 
     @FXML private ListView<MatchReportLine> matchReportListView;

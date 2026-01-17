@@ -50,17 +50,6 @@ public class StandingsController {
         standingListView.getItems().setAll(lines);
     }
 
-    // --- Eksempel: ændr points og opdatér ---
-    public void addPoints(String teamName, int pointsToAdd) {
-        for (Team t : teams) {
-            if (t.getTeamName().equalsIgnoreCase(teamName)) {
-                t.setPoints(t.getPoints() + pointsToAdd);
-                break;
-            }
-        }
-        refreshStandings();
-    }
-
     @FXML
     private void backButtonAction(ActionEvent event){
         SceneManager.switchScene(event,"scenes/Menu.fxml");

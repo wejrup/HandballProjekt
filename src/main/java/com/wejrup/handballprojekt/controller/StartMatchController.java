@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+@SuppressWarnings("CallToPrintStackTrace")
 public class StartMatchController {
     @FXML private Button nextButton;
     @FXML private Label errorLabel;

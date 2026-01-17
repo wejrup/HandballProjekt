@@ -14,7 +14,7 @@ public class CreateTeamController {
 
     @FXML
     public void cancelAction(ActionEvent event){
-        SceneManager.switchScene(event, "/scenes/Standings.fxml");
+        SceneManager.switchScene(event, "scenes/Standings.fxml");
     }
 
     @FXML

@@ -87,14 +87,6 @@ public class Match {
         return matchID;
     }
 
-    public int getHomeTeamID(){
-        return homeTeam.getTeamID();
-    }
-
-    public int getAwayTeamID(){
-        return awayTeam.getTeamID();
-    }
-
     public String getHomeTeamName(){
         return homeTeam.getTeamName();
     }

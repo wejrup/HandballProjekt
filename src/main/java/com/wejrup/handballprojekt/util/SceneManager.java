@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+@SuppressWarnings("CallToPrintStackTrace")
 public class SceneManager {
 
     public static void switchScene(ActionEvent event, String path) {

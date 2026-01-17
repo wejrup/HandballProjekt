@@ -22,13 +22,9 @@ public class SelectedMatchReportController {
     @FXML private Label scoreLine;
     @FXML private ListView matchReportListView;
 
-    private Match match;
-
     private final ObservableList<Event> events = FXCollections.observableArrayList();
 
-
     public void setMatch(Match match){
-        this.match = match;
         homeTeamName.setText(match.getHomeTeamName());
         awayTeamName.setText(match.getAwayTeamName());
         scoreLine.setText(match.getScoreline());
@@ -48,6 +44,7 @@ public class SelectedMatchReportController {
         matchReportListView.getItems().clear();
 
         for (Event e : events) {
+            //noinspection unchecked
             matchReportListView.getItems().add(new SelectedMatchReportLine(e));
         }
     }
