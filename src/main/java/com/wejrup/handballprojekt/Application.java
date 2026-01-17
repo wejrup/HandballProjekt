@@ -1,13 +1,13 @@
 package com.wejrup.handballprojekt;
 
-import javafx.application.Application;
+import com.wejrup.handballprojekt.controller.data.Database;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
             System.exit(1);
         }
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("scenes/Menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("scenes/Menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
         stage.setTitle("Handball Match System");
         stage.setScene(scene);

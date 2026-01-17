@@ -1,4 +1,8 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.controller.data;
+
+import com.wejrup.handballprojekt.domain.Event;
+import com.wejrup.handballprojekt.domain.Match;
+import com.wejrup.handballprojekt.domain.Team;
 
 import java.sql.*;
 import java.util.ArrayList;

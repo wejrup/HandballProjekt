@@ -1,4 +1,4 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.domain;
 
 public class Team {
     private final int teamID;
@@ -8,6 +8,10 @@ public class Team {
     public Team(int teamID, String teamName, int points){
         this.teamID = teamID;
         this.teamName = teamName;
+        this.points = points;
+    }
+
+    public void setPoints(int points){
         this.points = points;
     }
 
@@ -21,9 +25,6 @@ public class Team {
         return points;
     }
 
-    public void setPoints(int points){
-        this.points = points;
-    }
     public String toString(){
         return teamName;
     }

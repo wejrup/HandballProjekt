@@ -68,7 +68,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.wejrup.handballprojekt/com.wejrup.handballprojekt.HelloApplication
+                            <mainClass>com.wejrup.handballprojekt/com.wejrup.handballprojekt.Application
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

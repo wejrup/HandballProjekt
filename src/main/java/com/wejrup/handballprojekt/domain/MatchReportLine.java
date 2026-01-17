@@ -1,4 +1,4 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.domain;
 
 public class MatchReportLine {
     private final Match match;

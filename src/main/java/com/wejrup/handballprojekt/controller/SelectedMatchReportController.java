@@ -1,9 +1,9 @@
 package com.wejrup.handballprojekt.controller;
 
-import com.wejrup.handballprojekt.Database;
-import com.wejrup.handballprojekt.Event;
-import com.wejrup.handballprojekt.Match;
-import com.wejrup.handballprojekt.SelectedMatchReportLine;
+import com.wejrup.handballprojekt.controller.data.Database;
+import com.wejrup.handballprojekt.domain.Event;
+import com.wejrup.handballprojekt.domain.Match;
+import com.wejrup.handballprojekt.domain.SelectedMatchReportLine;
 import com.wejrup.handballprojekt.util.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

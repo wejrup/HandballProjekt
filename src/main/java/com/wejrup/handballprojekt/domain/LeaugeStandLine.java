@@ -1,4 +1,4 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.domain;
 
 public class LeaugeStandLine {
     private final int position;

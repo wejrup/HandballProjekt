@@ -1,4 +1,4 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.domain;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -71,9 +71,12 @@ public class Match {
         addEvent(Event.EventType.SuspensionUndo, timestampSeconds, awayTeam.getTeamID(), Event.TeamSide.Away," ");
     }
 
-    //Hent teamNavne
-    public String getTeamNamesFromId(int ID){
-        return "ToDo";
+    public void setHomeTeamGoals(int goals){
+        homeTeamGoals = goals;
+    }
+
+    public void setAwayTeamGoals(int goals){
+        awayTeamGoals = goals;
     }
 
     public String getScoreline(){
@@ -106,14 +109,6 @@ public class Match {
 
     public int getAwayTeamGoals(){
         return awayTeamGoals;
-    }
-
-    public void setHomeTeamGoals(int goals){
-        homeTeamGoals = goals;
-    }
-
-    public void setAwayTeamGoals(int goals){
-        awayTeamGoals = goals;
     }
 
     public String toString(){

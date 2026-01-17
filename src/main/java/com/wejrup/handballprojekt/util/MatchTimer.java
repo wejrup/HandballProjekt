@@ -1,25 +1,19 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.util;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
-
-import static java.time.Clock.tick;
-
 public class MatchTimer {
 
     private final int matchLengthSeconds;
     private int currentSeconds;
-    private final boolean matchIsFinished;
     private final Timeline timeline;
     private Runnable onTick;
 
-    //Skult data kerne som er i sekunder mens udati er i minutter
     public MatchTimer(int minutter){
         matchLengthSeconds = minutter * 60;
         currentSeconds = 0;
-        matchIsFinished = false;
 
         timeline = new Timeline(
                 new KeyFrame(Duration.seconds(1), e -> tick())
@@ -27,6 +21,15 @@ public class MatchTimer {
         timeline.setCycleCount(Timeline.INDEFINITE);
 
     }
+
+    public void setOnTick(Runnable onTick) {
+        this.onTick = onTick;
+    }
+
+    public int getCurrentSeconds() {
+        return currentSeconds;
+    }
+
     private void tick(){
         if (currentSeconds < matchLengthSeconds){
             currentSeconds++;
@@ -50,18 +53,6 @@ public class MatchTimer {
     public void resetTimer(){
         timeline.stop();
         currentSeconds = 0;
-    }
-
-    public int getCurrentSeconds() {
-        return currentSeconds;
-    }
-
-    public void setOnTick(Runnable onTick) {
-        this.onTick = onTick;
-    }
-
-    public boolean matchIsFinished(){
-        return matchIsFinished;
     }
 
 }

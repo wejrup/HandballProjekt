@@ -1,7 +1,7 @@
 package com.wejrup.handballprojekt.controller;
 
-import com.wejrup.handballprojekt.Database;
-import com.wejrup.handballprojekt.Team;
+import com.wejrup.handballprojekt.controller.data.Database;
+import com.wejrup.handballprojekt.domain.Team;
 import com.wejrup.handballprojekt.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -1,21 +1,16 @@
 package com.wejrup.handballprojekt.controller;
 
-import com.wejrup.handballprojekt.Database;
-import com.wejrup.handballprojekt.LeaugeStandLine;
-import com.wejrup.handballprojekt.Team;
+import com.wejrup.handballprojekt.controller.data.Database;
+import com.wejrup.handballprojekt.domain.LeaugeStandLine;
+import com.wejrup.handballprojekt.domain.Team;
 import com.wejrup.handballprojekt.util.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

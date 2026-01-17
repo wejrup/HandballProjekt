@@ -1,4 +1,4 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.domain;
 
 public class Event {
 
@@ -31,7 +31,6 @@ public class Event {
         this.currentScore = currentScore;
     }
 
-
     public int getEventTimestampSeconds(){
         return eventTimestampSeconds;
     }
@@ -48,18 +47,18 @@ public class Event {
         return teamSide;
     }
 
-    public String formatTime(){
-        int minutes = getEventTimestampSeconds() / 60;
-        int seconds = getEventTimestampSeconds() % 60;
-        return String.format("%02d:%02d", minutes, seconds);
-    }
-
     public String getCurrentScore(){
         return currentScore;
     }
 
     public int getMatchID(){
         return matchID;
+    }
+
+    public String formatTime(){
+        int minutes = getEventTimestampSeconds() / 60;
+        int seconds = getEventTimestampSeconds() % 60;
+        return String.format("%02d:%02d", minutes, seconds);
     }
 
     public String toString() {
