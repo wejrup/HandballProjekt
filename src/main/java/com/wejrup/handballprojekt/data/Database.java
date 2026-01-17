@@ -1,4 +1,4 @@
-package com.wejrup.handballprojekt.controller.data;
+package com.wejrup.handballprojekt.data;
 
 import com.wejrup.handballprojekt.domain.Event;
 import com.wejrup.handballprojekt.domain.Match;

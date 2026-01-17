@@ -1,6 +1,6 @@
 package com.wejrup.handballprojekt;
 
-import com.wejrup.handballprojekt.controller.data.Database;
+import com.wejrup.handballprojekt.data.Database;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;

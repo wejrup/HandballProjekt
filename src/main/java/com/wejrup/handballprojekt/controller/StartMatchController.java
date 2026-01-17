@@ -1,6 +1,6 @@
 package com.wejrup.handballprojekt.controller;
 
-import com.wejrup.handballprojekt.controller.data.Database;
+import com.wejrup.handballprojekt.data.Database;
 import com.wejrup.handballprojekt.domain.Match;
 import com.wejrup.handballprojekt.domain.Team;
 import com.wejrup.handballprojekt.util.SceneManager;

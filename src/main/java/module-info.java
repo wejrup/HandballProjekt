@@ -13,6 +13,6 @@ module com.wejrup.handballprojekt {
     opens com.wejrup.handballprojekt.util to javafx.fxml;
     exports com.wejrup.handballprojekt.domain;
     opens com.wejrup.handballprojekt.domain to javafx.fxml;
-    exports com.wejrup.handballprojekt.controller.data;
-    opens com.wejrup.handballprojekt.controller.data to javafx.fxml;
+    exports com.wejrup.handballprojekt.data;
+    opens com.wejrup.handballprojekt.data to javafx.fxml;
 }
