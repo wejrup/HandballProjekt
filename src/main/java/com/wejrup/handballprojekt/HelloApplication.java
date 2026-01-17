@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
             System.exit(1);
         }
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("scenes/Menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
         stage.setTitle("Handball Match System");
         stage.setScene(scene);

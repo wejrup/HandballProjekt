@@ -1,14 +1,11 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.controller;
 
+import com.wejrup.handballprojekt.Database;
+import com.wejrup.handballprojekt.Team;
+import com.wejrup.handballprojekt.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -28,11 +25,12 @@ public class EditTeamController {
     }
 
     @FXML
-    private void cancelAction(){
-        sceneChange("Standings.fxml");
+    private void cancelAction(ActionEvent event){
+        SceneManager.switchScene(event, "scenes/Standings.fxml");
     }
     @FXML
-    private void saveAndExitAction(){
+    private void saveAndExitAction(ActionEvent event){
+        //Get name from textfield
         String name = teamName.getText();
         int value;
 
@@ -46,19 +44,19 @@ public class EditTeamController {
         }
 
         if (name != null && !name.isBlank()){
-            Database.updateTeam(chosenTeam.teamID, name, value);
-            sceneChange("Standings.fxml");
+            Database.updateTeam(chosenTeam.getTeamID(), name, value);
+            SceneManager.switchScene(event,"scenes/Standings.fxml");
         }
         }
 
     @FXML
-    private void deleteAction(){
+    private void deleteAction(ActionEvent event){
         if (chosenTeam == null){
             return;
         }
-        if (confirmDelete(chosenTeam.teamName)){
-            Database.deleteTeam(chosenTeam.teamID);
-            sceneChange("Standings.fxml");
+        if (confirmDelete(chosenTeam.getTeamName())){
+            Database.deleteTeam(chosenTeam.getTeamID());
+            SceneManager.switchScene(event,"scenes/Standings.fxml");
         }
     }
 
@@ -70,21 +68,6 @@ public class EditTeamController {
     private void refreshTextField(Team team){
         teamName.setText(team.getTeamName());
         teamPoints.setText(String.valueOf(team.getPoints()));
-    }
-
-    private void sceneChange(String sceneFile) {
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFile));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) saveAndExitButton.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public static boolean confirmDelete(String teamName) {

@@ -1,5 +1,9 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.controller;
 
+import com.wejrup.handballprojekt.Database;
+import com.wejrup.handballprojekt.Match;
+import com.wejrup.handballprojekt.Team;
+import com.wejrup.handballprojekt.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,23 +48,12 @@ public class StartMatchController {
         Match match = new Match(matchID, home, away);
         System.out.println("MathID: " + matchID);
 
-        sceneChange("matchScreen.fxml",match);
-    }
-    @FXML
-    private void backButton(){
-        sceneChange("Menu.fxml",null);
-    }
-
-    private void sceneChange(String sceneFile, Match match) {
-
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFile));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/wejrup/handballprojekt/scenes/MatchScreen.fxml"));
             Parent root = loader.load();
 
-            if ("matchScreen.fxml".equals(sceneFile)) {
-                MatchScreenController controller = loader.getController();
-                controller.setMatch(match);
-            }
+            MatchScreenController controller = loader.getController();
+            controller.setMatch(match);
 
             Stage stage = (Stage) nextButton.getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -70,6 +63,10 @@ public class StartMatchController {
             e.printStackTrace();
         }
     }
-
+    @FXML
+    private void backButton(ActionEvent event){
+        SceneManager.switchScene(event, "scenes/Menu.fxml");
     }
+
+}
 

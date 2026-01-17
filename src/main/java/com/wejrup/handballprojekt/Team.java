@@ -1,9 +1,9 @@
 package com.wejrup.handballprojekt;
 
 public class Team {
-    int teamID;
-    String teamName;
-    int points;
+    private final int teamID;
+    private final String teamName;
+    private int points;
 
     public Team(int teamID, String teamName, int points){
         this.teamID = teamID;

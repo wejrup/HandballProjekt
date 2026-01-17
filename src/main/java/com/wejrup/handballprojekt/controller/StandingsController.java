@@ -1,7 +1,12 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.controller;
 
+import com.wejrup.handballprojekt.Database;
+import com.wejrup.handballprojekt.LeaugeStandLine;
+import com.wejrup.handballprojekt.Team;
+import com.wejrup.handballprojekt.util.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -62,35 +67,19 @@ public class StandingsController {
     }
 
     @FXML
-    private void backButtonAction(){
-        sceneChange("Menu.fxml");
+    private void backButtonAction(ActionEvent event){
+        SceneManager.switchScene(event,"scenes/Menu.fxml");
     }
 
     @FXML
-    private void createTeamAction(){
-        sceneChange("CreateTeam.fxml");
+    private void createTeamAction(ActionEvent event){
+        SceneManager.switchScene(event, "scenes/CreateTeam.fxml");
     }
 
     @FXML
-    private void editTeamAction(){
-        sceneChange("EditTeam.fxml");
+    private void editTeamAction(ActionEvent event){
+        SceneManager.switchScene(event, "scenes/EditTeam.fxml");
     }
-
-    private void sceneChange(String sceneFile) {
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFile));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) backButton.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
 
 }

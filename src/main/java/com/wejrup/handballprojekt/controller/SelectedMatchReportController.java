@@ -1,17 +1,19 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.controller;
 
+import com.wejrup.handballprojekt.Database;
+import com.wejrup.handballprojekt.Event;
+import com.wejrup.handballprojekt.Match;
+import com.wejrup.handballprojekt.SelectedMatchReportLine;
+import com.wejrup.handballprojekt.util.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 
 public class SelectedMatchReportController {
     @FXML private Button backButton;
@@ -35,17 +37,13 @@ public class SelectedMatchReportController {
         refreshMatches();
     }
 
-
-
     public void initialize() {
         matchReportListView.getItems().clear();
-        // Monospace font => kolonner står lige
         matchReportListView.setStyle("-fx-font-family: 'Consolas'; -fx-font-size: 14px;");
 
         refreshMatches();
     }
 
-    /** Ingen sortering – bare list dem som de kommer fra DB */
     public void refreshMatches() {
         matchReportListView.getItems().clear();
 
@@ -54,23 +52,9 @@ public class SelectedMatchReportController {
         }
     }
 
-
     @FXML
-    private void backAction(){
-        sceneChange("MatchReport.fxml");
+    private void backAction(ActionEvent event){
+        SceneManager.switchScene(event, "scenes/MatchReport.fxml");
     }
 
-    private void sceneChange(String sceneFile) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFile));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) backButton.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

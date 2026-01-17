@@ -1,7 +1,12 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.controller;
 
+import com.wejrup.handballprojekt.Database;
+import com.wejrup.handballprojekt.Match;
+import com.wejrup.handballprojekt.MatchReportLine;
+import com.wejrup.handballprojekt.util.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class matchReportController {
+public class MatchReportController {
 
     @FXML private ListView<MatchReportLine> matchReportListView;
     @FXML private Button backButton;
@@ -23,13 +28,12 @@ public class matchReportController {
     public void initialize() {
         matches.addAll(Database.selectAllMatches());
 
-        // Monospace font => kolonner står lige
+        // Monospace font for kolonner står lige
         matchReportListView.setStyle("-fx-font-family: 'Consolas'; -fx-font-size: 14px;");
 
         refreshMatches();
     }
 
-    /** Ingen sortering – bare list dem som de kommer fra DB */
     public void refreshMatches() {
         matchReportListView.getItems().clear();
 
@@ -54,7 +58,7 @@ public class matchReportController {
 
             // Load næste scene + send match til controller
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("SelectedMatchReport.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/wejrup/handballprojekt/scenes/SelectedMatchReport.fxml"));
                 Parent root = loader.load();
 
                 SelectedMatchReportController controller = loader.getController();
@@ -71,21 +75,8 @@ public class matchReportController {
     }
 
     @FXML
-    private void backButtonAction() {
-        sceneChange("Menu.fxml");
+    private void backButtonAction(ActionEvent event) {
+        SceneManager.switchScene(event, "scenes/Menu.fxml");
     }
 
-    private void sceneChange(String sceneFile) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFile));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) backButton.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

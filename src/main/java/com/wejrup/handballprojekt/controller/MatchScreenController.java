@@ -1,19 +1,18 @@
-package com.wejrup.handballprojekt;
+package com.wejrup.handballprojekt.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.wejrup.handballprojekt.Database;
+import com.wejrup.handballprojekt.Event;
+import com.wejrup.handballprojekt.Match;
+import com.wejrup.handballprojekt.MatchTimer;
+import com.wejrup.handballprojekt.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.ScrollEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -179,23 +178,7 @@ public class  MatchScreenController {
         }
         Database.updateMatchGoals(match.getMatchID(),match.getHomeTeamGoals(),match.getAwayTeamGoals());
         matchTimer.resetTimer();
-        sceneChange("Menu.fxml");
+        SceneManager.switchScene(event, "scenes/Menu.fxml");
     }
-    private void sceneChange(String sceneFile) {
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFile));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) saveandexit.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 
 }
