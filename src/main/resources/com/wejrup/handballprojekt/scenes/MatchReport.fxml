@@ -19,7 +19,7 @@
       </AnchorPane>
       <AnchorPane layoutX="1.0" layoutY="609.0" prefHeight="80.0" prefWidth="1280.0" style="-fx-background-color: #B1B2B5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
       <ListView fx:id="matchReportListView" layoutX="124.0" layoutY="310.0" onMouseClicked="#matchListClicked" prefWidth="1280.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="170.0" />
-      <Button fx:id="backButton" layoutX="1140.0" layoutY="740.0" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 25; -fx-background-color: #5D8AA8;" text="Back" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+      <Button layoutX="1140.0" layoutY="740.0" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 25; -fx-background-color: #5D8AA8;" text="Back" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <font>
             <Font size="20.0" />
          </font>

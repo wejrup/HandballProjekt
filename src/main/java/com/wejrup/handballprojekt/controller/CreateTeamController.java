@@ -7,16 +7,29 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+/**
+ * *************** CreateTeamController ***************
+ *
+ * Controller class som er ansvarlig for user
+ * interactions når man opretter et nyt hold
+ */
+
 public class CreateTeamController {
 
-    @FXML private Button saveAndExit;
+    // Text field hvor teamName bliver indtastet
     @FXML private TextField teamName;
 
+    /** Annullere create team og går tilbage til standings view */
     @FXML
     public void cancelAction(ActionEvent event){
         SceneManager.switchScene(event, "scenes/Standings.fxml");
     }
 
+    /**
+     * Gemmer det indtastet team navn i databasen og går tilbage til standings view
+     *
+     * Inputtet bliver valideret for at tjekke det ikke er Null eller blankt
+     * */
     @FXML
     public void saveAndExitAction(ActionEvent event){
         String name = teamName.getText();
@@ -30,6 +43,4 @@ public class CreateTeamController {
         Database.createTeam(name);
         SceneManager.switchScene(event, "scenes/Standings.fxml");
     }
-
-
 }
